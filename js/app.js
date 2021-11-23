@@ -33,24 +33,28 @@ function cardmove(event){
 else
 {
   q.push(event.target);
-  console.log("remove"+q.length);
+ 
   event.target.classList.add("open");
  if(q[0].type === q[1].type)
-{q[0].classList.add("match"); q[1].classList.add("match");
+{q[0].classList.add("match"); q[1].classList.add("match"); moveCounter();
 
 }
 else
 {
  //ssetTimeout(() =>{ 
    
-  q[0].classList.remove("open");
+ setTimeout(function(){
+  console.log("length"+q.length);
   q[1].classList.remove("open");
+  q[0].classList.remove("open");
+  moveCounter();
+  }, 500);
   
 //},1100);
  
 }
 
-moveCounter();
+
 }
   }
 
