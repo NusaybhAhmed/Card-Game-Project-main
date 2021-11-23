@@ -35,19 +35,22 @@ else
   q.push(event.target);
   q[1].classList.add("open");
  if(q[0].type === q[1].type)
-{q[0].classList.add("match"); q[1].classList.add("match");}
+{q[0].classList.add("match"); q[1].classList.add("match");
+move.innerHTML=++moves;
+  q=[];
+}
 else
 {
   setTimeout(function(){ 
     console.log("remove"+q.length);
   q[0].classList.remove("open");
   q[1].classList.remove("open");
-  
+  move.innerHTML=++moves;
+  q=[]; 
 },1100);
  
 }
-move.innerHTML=++moves;
-  q=[];
+
 }
   }
 
