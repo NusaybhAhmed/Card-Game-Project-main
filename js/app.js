@@ -39,10 +39,11 @@ else
 else
 {
   setTimeout(function(){ 
-    console.log("remove");
+    console.log("remove"+q.length);
   q[0].classList.remove("open");
   q[1].classList.remove("open");
-},2100);
+  
+},1100);
  
 }
 move.innerHTML=++moves;
