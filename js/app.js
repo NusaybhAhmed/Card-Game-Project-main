@@ -33,22 +33,24 @@ function cardmove(event){
 else
 {
   q.push(event.target);
+  console.log("remove"+q.length);
   event.target.classList.add("open");
  if(q[0].type === q[1].type)
 {q[0].classList.add("match"); q[1].classList.add("match");
-moveCounter();
+
 }
 else
 {
- setTimeout(function(){ 
-    console.log("remove"+q.length);
+ //ssetTimeout(() =>{ 
+   
   q[0].classList.remove("open");
   q[1].classList.remove("open");
-  moveCounter();
-},1100);
+  
+//},1100);
  
 }
 
+moveCounter();
 }
   }
 
