@@ -33,11 +33,17 @@ function cardmove(event){
 else
 {
   q.push(event.target);
+  q[1].classList.add("open");
  if(q[0].type === q[1].type)
 {q[0].classList.add("match"); q[1].classList.add("match");}
 else
-{q[0].classList.remove("open");
-q[1].classList.remove("open");
+{
+  setTimeout(function(){ 
+    console.log("remove");
+  q[0].classList.remove("open");
+  q[1].classList.remove("open");
+},2100);
+ 
 }
 move.innerHTML=++moves;
   q=[];
