@@ -1,5 +1,5 @@
 
-// varible
+// HTML varible
 var cards = document.querySelectorAll(".card");
 const deck =document.getElementById("deck");
 const timer =document.getElementById("timer");
@@ -8,21 +8,46 @@ const heart=document.getElementById("heart");
 const move=document.getElementById("moves");
 
 
-
-
-
-// event listeners
-
-
+// Move
+let moves=0;
   cards.forEach(item => {
     item.addEventListener('click',function (event)  {
       if(event.target !== event.currentTarget) console.log("child clicked") ;
-     else event.target.classList.toggle("open");
+     else cardmove(event)
     })
   });
+  let q=[];
+  let hit=0;
+function cardmove(event){
 
-  //move
-let moves=0;
+  
+    if(!event.target.classList.contains("match")
+    &&!event.target.classList.contains("open"))
+    {
+      if(q.length==0)
+{    q.push(event.target);
+    event.target.classList.add("open");
+    
+    console.log("t"+moves);
+}
+else
+{
+  q.push(event.target);
+ if(q[0].type === q[1].type)
+{q[0].classList.add("match"); q[1].classList.add("match");}
+else
+{q[0].classList.remove("open");
+q[1].classList.remove("open");
+}
+move.innerHTML=++moves;
+  q=[];
+}
+  }
+
+ 
+  
+}
+
   function moveCounter(){    
     moves++;    
     move.innerHTML = moves;
@@ -74,7 +99,7 @@ const sec=time%60;
   function reset(){
     stopCount();
     shuffleclos();
-   
+    q=[];
+    hit=0;
     moves=0;
-    move.innerHTML = moves;
-  }
+    move.innerHTML = moves;}
