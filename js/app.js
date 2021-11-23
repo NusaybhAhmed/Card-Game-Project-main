@@ -10,6 +10,7 @@ const move=document.getElementById("moves");
 
 // Move
 let moves=0;
+shuffleclos();
   cards.forEach(item => {
     item.addEventListener('click',function (event)  {
       if(event.target !== event.currentTarget) console.log("child clicked") ;
