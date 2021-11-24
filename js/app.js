@@ -136,7 +136,7 @@ if(moves==16&&matchNo<8){
 }
 if(moves==24&&matchNo<8){
   heart[2].style.visibility = "collapse";
-  reset()
+  reset();
 }
 
 }
