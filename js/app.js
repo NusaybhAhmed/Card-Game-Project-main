@@ -30,7 +30,8 @@ function cardmove(event){
 
   
     if(!event.target.classList.contains("match")
-    &&!event.target.classList.contains("open"))
+    &&!event.target.classList.contains("open")
+    &&q.length<2)
     {
       if(q.length==0)
 {    q.push(event.target);
