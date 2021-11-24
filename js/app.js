@@ -4,21 +4,27 @@ var cards = document.querySelectorAll(".card");
 const deck =document.getElementById("deck");
 const timer =document.getElementById("timer");
 const restart =document.getElementById("restart");
-const heart=document.getElementById("heart");
+const heart =document.getElementById("heart").children;
 const move=document.getElementById("moves");
-
-
-// Move
+// varibles
 let moves=0;
-shuffleclos();
-  cards.forEach(item => {
+let matchNo=0;
+let q=[];
+let time=0;
+let torestarttime;
+let timer_is_on = true;
+
+
+//shuffleclos();
+
+
+cards.forEach(item => {
     item.addEventListener('click',function (event)  {
       if(event.target !== event.currentTarget) console.log("child clicked") ;
      else cardmove(event)
     })
   });
-  let q=[];
-  let hit=0;
+
 function cardmove(event){
 
   
@@ -29,7 +35,7 @@ function cardmove(event){
 {    q.push(event.target);
     event.target.classList.add("open");
     
-    console.log("t"+moves);
+    console.log("t"+moves +"match "+matchNo);
 }
 else
 {
@@ -37,7 +43,10 @@ else
  
   event.target.classList.add("open");
  if(q[0].type === q[1].type)
-{q[0].classList.add("match"); q[1].classList.add("match"); moveCounter();
+{q[0].classList.add("match");
+ q[1].classList.add("match");
+  matchNo++;
+  moveCounter();
 
 }
 else
@@ -53,26 +62,32 @@ else
   
 //},1100);
  
-}
+    }
 
 
-}
   }
-
- 
-  
 }
+
+
+
+  setTimeout(function()
+  {
+  if(matchNo==8){
+    $("#myModal").modal();
+  //  on();
+  }
+  }, 500); 
+  }
 
   function moveCounter(){    
     moves++;    
     move.innerHTML = moves;
     q=[]; 
+    heartNo();
 }
 
   //timer
-let time=0;
-let torestarttime;
-let timer_is_on = true;
+
   deck.addEventListener('click',function(){
     if (timer_is_on) { startCount();}
   });  
@@ -111,6 +126,27 @@ const sec=time%60;
     })
     })
   }
+//heart
+function heartNo(){
+if(moves==8&&matchNo<8){
+  heart[0].style.visibility = "collapse";
+}
+if(moves==16&&matchNo<8){
+  heart[1].style.visibility = "collapse";
+}
+if(moves==24&&matchNo<8){
+  heart[2].style.visibility = "collapse";
+  reset()
+}
+
+}
+function on() {
+  document.getElementById("overlay").style.display = "block";
+}
+
+function off() {
+  document.getElementById("overlay").style.display = "none";
+}
 
   function reset(){
     stopCount();
@@ -118,4 +154,8 @@ const sec=time%60;
     q=[];
     hit=0;
     moves=0;
-    move.innerHTML = moves;}
+    move.innerHTML = moves;
+    for (var i= 0; i < heart.length; i++){ 
+      heart[i].style.visibility = "visible";
+  }
+  }
