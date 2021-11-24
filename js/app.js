@@ -6,6 +6,8 @@ const timer =document.getElementById("timer");
 const restart =document.getElementById("restart");
 const heart =document.getElementById("heart").children;
 const move=document.getElementById("moves");
+const result =document.getElementById("result");
+const Playagain=document.getElementById("b-Playagain");
 // varibles
 let moves=0;
 let matchNo=0;
@@ -13,7 +15,6 @@ let q=[];
 let time=0;
 let torestarttime;
 let timer_is_on = true;
-
 
 //shuffleclos();
 
@@ -73,8 +74,7 @@ else
   setTimeout(function()
   {
   if(matchNo==8){
-    $("#myModal").modal();
-  //  on();
+   on();
   }
   }, 500); 
   }
@@ -140,13 +140,21 @@ if(moves==24&&matchNo<8){
 }
 
 }
-function on() {
+function on() {   
+ result.innerText="You made  "+moves+" moves.  "+"in "+timer.innerHTML;
   document.getElementById("overlay").style.display = "block";
 }
 
 function off() {
   document.getElementById("overlay").style.display = "none";
 }
+
+  Playagain.addEventListener('click', event => {
+    console.log("start");
+    off();
+    reset();
+  });
+
 
   function reset(){
     stopCount();
