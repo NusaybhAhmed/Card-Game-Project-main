@@ -163,6 +163,7 @@ function off() {
     hit=0;
     moves=0;
     move.innerHTML = moves;
+    matchNo=0;
     for (var i= 0; i < heart.length; i++){ 
       heart[i].style.visibility = "visible";
   }
