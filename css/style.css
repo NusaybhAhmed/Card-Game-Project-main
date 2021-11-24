@@ -49,6 +49,10 @@
     z-index: 2;
     cursor: pointer;
   }
+  .show {
+	visibility: visible !important;
+	opacity: 100 !important;
+}
 
 @media(max-width:780px){
     .card{
